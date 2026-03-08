@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# ignore internal uid file and pck file
+*.pck
+*.uid
+
+# ignore binary
+*.x86_64
+*.exe
