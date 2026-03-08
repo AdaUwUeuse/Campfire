@@ -1,7 +1,11 @@
-class_name Component extends Node2D
+class_name Component extends Node
 
-func _ready() -> void:
-	pass
+var _entity : Entity
+var entity : Entity:
+	get:
+		return _entity
 
-func _process(delta: float) -> void:
-	pass
+func setup(owner_entity : Entity) -> void:
+	assert(owner_entity != null, "Component setup requires a valid Entity")
+	assert(_entity == null, "Entity already asignated to this component")
+	_entity = owner_entity

@@ -9,7 +9,8 @@ func _cache_components() -> void:
 			if _components.has(child.get_script()):
 				push_warning("Component \"%s\" already registered, ignored" % child.get_class())
 				continue
-			_components.set(child.get_script(), child)
+			child.setup(self)
+			_components[child.get_script()] = child
 
 func _clear_cache() -> void:
 	_components.clear()
@@ -39,7 +40,8 @@ func _on_child_entered(child : Node) -> void:
 		if _components.has(script):
 			push_warning("Component \"%s\" already in entity tree, ignored" % child.get_class())
 			return
-		_components.set(script, child)
+		child.setup(self)
+		_components[script] = child
 
 func _on_child_exiting(child : Node) -> void:
 	if child is Component:
