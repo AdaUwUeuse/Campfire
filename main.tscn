@@ -1,3 +1,69 @@
-[gd_scene format=3 uid="uid://cph5b8tf7gopg"]
+[gd_scene format=4 uid="uid://cph5b8tf7gopg"]
 
-[node name="Main" type="Node2D" unique_id=834613231]
+[ext_resource type="PackedScene" uid="uid://bhoee4gtuu42d" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ctjnqx2dlwyca" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://sb2d2qye7itj" path="res://scripts/inventory_slot.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://bfij27g5e68a3" path="res://scripts/inventory.gd" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://duu7i67ocn5s7" path="res://scenes/item_pickup.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bdxti3mvxj7yb" path="res://scenes/inventory_ui.tscn" id="6_7mycd"]
+[ext_resource type="Shader" uid="uid://co3onitx4tmux" path="res://assets/shaders/light.gdshader" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://c38cfcxlgpdcc" path="res://light_shader.gd" id="8_efxa6"]
+[ext_resource type="PackedScene" uid="uid://cn5utin4qd0q1" path="res://scenes/light_core.tscn" id="9_kek77"]
+
+[sub_resource type="Resource" id="Resource_272bh"]
+script = ExtResource("3_7mycd")
+_slot_count = 16
+metadata/_custom_type_script = "uid://bfij27g5e68a3"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+shader = ExtResource("7_4c57u")
+shader_parameter/light_count = 0
+shader_parameter/positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/radius = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/intensities = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/colors = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/flicker_strength = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/flicker_speed = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/flicker_seed = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_kek77"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Main" type="Node2D" unique_id=1847153520]
+script = ExtResource("1_lquwl")
+
+[node name="Player" parent="." unique_id=1728839237 instance=ExtResource("1_ig7tw")]
+position = Vector2(576, 320)
+inventory = SubResource("Resource_272bh")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=337375878]
+
+[node name="ItemPickup" parent="." unique_id=1246022120 instance=ExtResource("5_7mycd")]
+position = Vector2(465, 190)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=108447385]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=2105816941 instance=ExtResource("6_7mycd")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.35
+anchor_bottom = 0.95
+
+[node name="LightShader" type="ColorRect" parent="CanvasLayer" unique_id=546717021]
+visible = false
+material = SubResource("ShaderMaterial_efxa6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_efxa6")
+
+[node name="LightCore" parent="." unique_id=1741107360 instance=ExtResource("9_kek77")]
+position = Vector2(216, 360)
+extinction_curve = SubResource("Curve_kek77")
+
+[connection signal="inventory_updated" from="Player" to="CanvasLayer/InventoryUI" method="_update_slots"]

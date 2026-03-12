@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LightData" format=3 uid="uid://gg2l07hhhjqn"]
+
+[ext_resource type="Script" uid="uid://ba5ahxpw2kjeh" path="res://scripts/light_data.gd" id="1_nkpmq"]
+
+[resource]
+script = ExtResource("1_nkpmq")
+intensity = 0.4
+color = Color(1, 0.42272738, 0.382242, 1)
+radius = 100.0
+flicker_strength = 2.0
+flicker_speed = 6.0
+metadata/_custom_type_script = "uid://ba5ahxpw2kjeh"

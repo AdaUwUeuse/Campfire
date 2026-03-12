@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bhoee4gtuu42d"]
+
+[ext_resource type="Script" uid="uid://ba582o2xnkeo1" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://bmwgufdwqgxb" path="res://assets/textures/player.svg" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 64.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1728839237]
+motion_mode = 1
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703212309]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1511140905]
+texture = ExtResource("2_g2els")
+
+[node name="PickupCollectorArea" type="Area2D" parent="." unique_id=1487036396]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollectorArea" unique_id=1428956388]
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(9.62615e-07, 0.64062935, 0.3517327, 0.41960785)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b6k4ixt34p44j"]
+
+[ext_resource type="AudioStream" uid="uid://dtsxiutrxidtm" path="res://assets/sound_effects/collect_rock.ogg" id="1_oh1mg"]
+[ext_resource type="Texture2D" uid="uid://baxaglvrblhrl" path="res://assets/textures/item_rock.svg" id="1_sjkqn"]
+[ext_resource type="Script" uid="uid://26v6ox3ob4bn" path="res://scripts/item_data.gd" id="1_y4kwg"]
+
+[resource]
+script = ExtResource("1_y4kwg")
+world_texture = ExtResource("1_sjkqn")
+inventory_texture = ExtResource("1_sjkqn")
+display_name = &"Rock"
+collect_sfx = ExtResource("1_oh1mg")
+metadata/_custom_type_script = "uid://26v6ox3ob4bn"

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cn5utin4qd0q1"]
+
+[ext_resource type="Script" uid="uid://qeypofplimyd" path="res://scripts/light_core.gd" id="1_2og5b"]
+[ext_resource type="Resource" uid="uid://gg2l07hhhjqn" path="res://assets/resources/light_data/campfire_low_fuel.tres" id="2_gryc3"]
+[ext_resource type="Resource" uid="uid://cmge3lucho8ly" path="res://assets/resources/light_data/campfire_high_fuel.tres" id="3_1ogix"]
+[ext_resource type="Texture2D" uid="uid://hw61077odegi" path="res://assets/textures/lightcore_00.svg" id="4_u02xw"]
+[ext_resource type="Texture2D" uid="uid://bwl32s0jlaj2k" path="res://assets/textures/flame_high.svg" id="5_qindt"]
+
+[sub_resource type="Curve" id="Curve_w48qg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("5_qindt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("5_qindt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("5_qindt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("5_qindt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("5_qindt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w48qg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vw27"]
+radius = 16.492422
+
+[node name="LightCore" type="StaticBody2D" unique_id=1741107360 groups=["Light"]]
+script = ExtResource("1_2og5b")
+min_fuel_light = ExtResource("2_gryc3")
+max_fuel_light = ExtResource("3_1ogix")
+light_curve = SubResource("Curve_w48qg")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=881604673]
+z_index = -1
+texture = ExtResource("4_u02xw")
+
+[node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1701559177]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_w48qg")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=883669965]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_5vw27")
+
+[node name="FuelLabel" type="Label" parent="." unique_id=38530979]
+unique_name_in_owner = true
+offset_left = -36.0
+offset_top = 24.0
+offset_right = 38.0
+offset_bottom = 52.0
+text = "Fuel: 80%"

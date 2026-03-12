@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LightData" format=3 uid="uid://cmge3lucho8ly"]
+
+[ext_resource type="Script" uid="uid://ba5ahxpw2kjeh" path="res://scripts/light_data.gd" id="1_bhvgn"]
+
+[resource]
+script = ExtResource("1_bhvgn")
+intensity = 0.9
+color = Color(0.99221975, 0.93643177, 0, 1)
+radius = 500.0
+flicker_strength = 0.35
+flicker_speed = 3.0
+metadata/_custom_type_script = "uid://ba5ahxpw2kjeh"

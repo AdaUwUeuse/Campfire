@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bdxti3mvxj7yb"]
+
+[ext_resource type="Script" uid="uid://ct4hcd1f4labw" path="res://scripts/inventory_ui.gd" id="1_qw0r6"]
+
+[node name="InventoryUI" type="Control" unique_id=2105816941]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qw0r6")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1424870851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1033556037]
+layout_mode = 2
+
+[node name="SlotContainer" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=1235725389]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4

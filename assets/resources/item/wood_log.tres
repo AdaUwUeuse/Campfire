@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bjy746pq8npya"]
+
+[ext_resource type="AudioStream" uid="uid://dio54l2xrj2fq" path="res://assets/sound_effects/collect_wood.ogg" id="1_gleia"]
+[ext_resource type="Texture2D" uid="uid://bxh0dc6dmlkme" path="res://assets/textures/item_wood.svg" id="1_lt4fm"]
+[ext_resource type="Script" uid="uid://26v6ox3ob4bn" path="res://scripts/item_data.gd" id="1_oksu1"]
+
+[resource]
+script = ExtResource("1_oksu1")
+world_texture = ExtResource("1_lt4fm")
+inventory_texture = ExtResource("1_lt4fm")
+display_name = &"Wood log"
+collect_sfx = ExtResource("1_gleia")
+metadata/_custom_type_script = "uid://26v6ox3ob4bn"

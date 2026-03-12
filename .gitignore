@@ -5,6 +5,7 @@
 # ignore internal uid file and pck file
 *.pck
 *.uid
+*.import
 
 # ignore binary
 *.x86_64

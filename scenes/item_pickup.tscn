@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duu7i67ocn5s7"]
+
+[ext_resource type="Script" uid="uid://djhbf6ar068je" path="res://scripts/item_pickup.gd" id="1_yiukj"]
+[ext_resource type="Resource" uid="uid://bjy746pq8npya" path="res://assets/resources/item/wood_log.tres" id="2_72sof"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
+radius = 16.0
+
+[node name="ItemPickup" type="Area2D" unique_id=1246022120]
+monitoring = false
+script = ExtResource("1_yiukj")
+_item_data = ExtResource("2_72sof")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1563776119]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1005899775]
+shape = SubResource("CircleShape2D_h2yge")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1855544834]
